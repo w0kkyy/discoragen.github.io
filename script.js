@@ -11,6 +11,7 @@
   // - КОРОБКА СЕКРЕТОВ                      — анонимные признания
   // - остальное: модалки постов/профиля/друзей/видео/гостевой книги,
   //   рендер лент (посты, видео, фото), донаты, жалобы и модерация
+  // === ФУНКЦИЯ ДЛЯ УВЕДОМЛЕНИЙ ===
   // =====================================================================
   const ADMIN_EMAILS = ["discoragen@gmail.com", "leznevnikita8@gmail.com"];
 
@@ -4274,5 +4275,26 @@
       listEl.appendChild(div);
     });
   }
+// === ФУНКЦИЯ ДЛЯ УВЕДОМЛЕНИЙ ===
+function showToast(message) {
+  const container = document.getElementById('toast-container');
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.innerHTML = message; 
+  
+  container.appendChild(toast);
+
+  setTimeout(() => toast.classList.add('show'), 10);
+
+  setTimeout(() => {
+    toast.classList.remove('show');
+    setTimeout(() => toast.remove(), 400); 
+  }, 3000);
+}
+
+// Тестовый запуск уведомления через 2 секунды после загрузки сайта
+setTimeout(() => {
+  showToast('Привет! Уведомления работают 🚀');
+}, 2000);
   // ===================== /КОРОБКА СЕКРЕТОВ =====================
 
